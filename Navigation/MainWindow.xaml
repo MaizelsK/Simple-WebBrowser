@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Navigation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="596" Width="800">
+    <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="True" DockPanel.Dock="Top" Height="30">
+            
+            <Menu DockPanel.Dock="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <MenuItem Name="menu" Header="Menu" Height="30" FontFamily="Verdana" Margin="0">
+                    <MenuItem Name="favorites" Header="Favorites">
+                        <ListView Name="favoriteList" SelectionChanged="FavoriteList_SelectionChanged"/>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <Button Name="addToFavoriteButton" DockPanel.Dock="Right" FontSize="10" Click="AddToFavoriteButton_Click">Add to favorites</Button>
+
+            <TextBox Text="Введите URL" Foreground="LightGray" Name="urlAddress" Background="White" GotKeyboardFocus="UrlAddress_GotKeyboardFocus" LostFocus="UrlAddress_LostFocus" VerticalContentAlignment="Center" FontSize="14" KeyDown="UrlAddress_KeyDown" Cursor="Hand">
+                <TextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="copyButton" Header="Копировать" Click="CopyButton_Click"></MenuItem>
+                        <MenuItem Name="pasteButton" Header="Вставить" Click="PasteButton_Click"></MenuItem>
+                    </ContextMenu>
+                </TextBox.ContextMenu>
+            </TextBox>
+            
+        </DockPanel>
+        <WebBrowser DockPanel.Dock="Bottom" Name="browser" Margin="0"/>
+    </DockPanel>
 </Window>
